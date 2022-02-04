@@ -14,7 +14,7 @@ ARG KMODVER
 
 # Grab the software from upstream
 RUN git clone https://github.com/chr15p/cachedump.git
-WORKDIR simple-kmod
+WORKDIR cachedump
 
 # Expecting kernel version as an input to the build
 ARG KVER
@@ -25,9 +25,8 @@ ARG KVER
 
 # Prep and build the module
 RUN yum install -y make sudo
-RUN make buildprep KVER=${KVER} KMODVER=${KMODVER}
-RUN make all       KVER=${KVER} KMODVER=${KMODVER}
-RUN make install   KVER=${KVER} KMODVER=${KMODVER}
+RUN make all       KVER=${KVER}
+RUN make install   KVER=${KVER}
 
 # Add the helper tools
 WORKDIR /root/kvc-simple-kmod
