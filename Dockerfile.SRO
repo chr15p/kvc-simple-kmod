@@ -31,11 +31,11 @@ RUN make install   KVER=${KVER}
 # Add the helper tools
 WORKDIR /root/kvc-simple-kmod
 ADD Makefile .
-ADD simple-kmod-lib.sh .
-ADD simple-kmod-wrapper.sh .
-ADD simple-kmod.conf .
+ADD cachedump-lib.sh .
+ADD cachedump-wrapper.sh .
+ADD cachedump.conf .
 RUN mkdir -p /usr/lib/kvc/
 RUN mkdir -p /etc/kvc/
 RUN make install
 
-RUN systemctl enable kmods-via-containers@simple-kmod
+RUN systemctl enable kmods-via-containers@cachedump
